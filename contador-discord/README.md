@@ -1,16 +1,85 @@
-# React + Vite
+# Discord Counter - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard en vivo para un contador de Discord con estadísticas, promesas y ranking de errores.
 
-Currently, two official plugins are available:
+## 🚀 Estructura del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```
+src/
+├── features/           # Features independientes (contador, stats, dashboard)
+├── shared/            # Componentes y utilidades compartidas
+├── App.tsx            # Componente raíz
+└── main.tsx           # Entry point
+```
 
-## React Compiler
+## 🔧 Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Variables de entorno**: Crea un `.env.local`:
+```
+VITE_API_URL=http://localhost:3001
+```
 
-## Expanding the ESLint configuration
+2. **Instalar dependencias**:
+```bash
+pnpm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Desarrollar**:
+```bash
+pnpm run dev
+```
+
+4. **Build para producción**:
+```bash
+pnpm run build
+```
+
+## 📦 Dependencias Principales
+
+- **React 18** - UI Framework
+- **Vite** - Build tool
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **TanStack Query** - Server state management
+- **Zustand** - Global state management
+
+## 🎯 Git Workflow
+
+```bash
+# Crear rama feature
+git checkout -b feature/nombre-feature
+
+# Hacer commits
+git commit -m "feat: descripción del cambio"
+
+# Pushear
+git push origin feature/nombre-feature
+
+# Crear Pull Request en GitHub
+```
+
+## 📝 Commit Convention
+
+```
+feat: nueva funcionalidad
+fix: arreglar bug
+config: cambios de configuración
+refactor: refactorización de código
+docs: cambios en documentación
+style: cambios de estilo (no lógica)
+```
+
+## 🔗 API Endpoints Esperados
+
+Tu amigo debe crear estos endpoints:
+
+- `GET /api/contador` - Número actual, días sin arruinar, último usuario
+- `GET /api/estadisticas` - Top contadores, top caqueados, promesas
+- `GET /api/promesas` - Lista de promesas
+- `GET /api/errores` - Lista de errores
+
+## 📱 Responsive Design
+
+- ✅ Desktop (1400px+)
+- ⏳ Tablet (768px - 1024px) - Por implementar
+- ⏳ Mobile (< 768px) - Por implementar
