@@ -1,24 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @layer base {
   * {
-    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Space Mono', monospace;
+    background-color: #0d1117;
   }
 }
 
 @layer utilities {
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0);
-      opacity: 0.5;
-    }
-    50% {
-      transform: translate(50px, -50px);
-      opacity: 0.8;
-    }
+  @keyframes orb-float {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    50% { transform: translate(30px, -40px) scale(1.1); opacity: 0.8; }
   }
 
-  .animate-float {
-    animation: float 20s ease-in-out infinite;
+  @keyframes orb-float-reverse {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    50% { transform: translate(-30px, 40px) scale(1.05); opacity: 0.7; }
+  }
+
+  @keyframes rotate-slow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes rotate-reverse {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.45; }
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-10%); }
+    100% { transform: translateY(110vh); }
+  }
+
+  .animate-orb-float {
+    animation: orb-float 18s ease-in-out infinite;
+  }
+
+  .animate-orb-float-reverse {
+    animation: orb-float-reverse 24s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-rotate-reverse {
+    animation: rotate-reverse 15s linear infinite;
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  .animate-scanline {
+    animation: scanline 8s linear infinite;
   }
 }

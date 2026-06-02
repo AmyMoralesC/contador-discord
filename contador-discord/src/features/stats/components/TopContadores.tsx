@@ -8,40 +8,48 @@ interface TopContadoresProps {
 }
 
 export const TopContadores: FC<TopContadoresProps> = ({ usuarios, isLoading }) => {
-  if (isLoading) return <LoadingState />;
+  if (isLoading) return <div className="p-4"><LoadingState /></div>;
 
   return (
-    <div className="space-y-2">
+    <div className="py-2">
       {usuarios.slice(0, 5).map((usuario, index) => (
         <div
           key={usuario.id}
-          className={`flex items-center justify-between p-2 rounded-lg ${
-            index === 0 ? 'bg-amber-400/10' : ''
+          className={`flex items-center gap-3 px-4 py-2 transition-colors hover:bg-amber-400/4 ${
+            index === 0 ? 'bg-amber-400/6' : ''
           }`}
         >
-          <div className="flex items-center gap-2">
-            <span
-              className={`font-bold text-sm min-w-5 ${
-                index === 0 ? 'text-amber-400' : 'text-gray-500'
-              }`}
-            >
-              #{index + 1}
-            </span>
-            <div
-              className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold ${
-                index === 0
-                  ? 'bg-linear-to-br from-amber-400 to-amber-600 text-black'
-                  : 'bg-gray-600 text-white'
-              }`}
-            >
-              {usuario.nombre.substring(0, 2).toUpperCase()}
-            </div>
-            <p className="text-white text-sm">{usuario.nombre}</p>
-          </div>
           <span
-            className={`font-semibold text-sm ${
-              index === 0 ? 'text-amber-400' : 'text-white'
-            }`}
+            className="text-xs font-bold min-w-6"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              color: index === 0 ? '#FBC208' : 'rgba(171,171,171,0.5)',
+            }}
+          >
+            #{index + 1}
+          </span>
+
+          <div
+            className="w-7.5 h-7.5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              background: index === 0
+                ? 'linear-gradient(135deg, #FBC208, #E6A800)'
+                : 'rgba(255,255,255,0.1)',
+              color: index === 0 ? '#000' : 'rgba(255,255,255,0.8)',
+            }}
+          >
+            {usuario.nombre.substring(0, 2).toUpperCase()}
+          </div>
+
+          <span className="text-white text-[13px] flex-1">{usuario.nombre}</span>
+
+          <span
+            className="text-xs font-bold"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              color: index === 0 ? '#FBC208' : 'rgba(255,255,255,0.8)',
+            }}
           >
             {usuario.contador} pts
           </span>
