@@ -14,47 +14,46 @@ export const Dashboard: FC = () => {
   const contadorQuery = useContador();
   const statsQuery = useStats();
 
-  if (contadorQuery.error || statsQuery.error) {
-    return <ErrorState />;
-  }
+  if (contadorQuery.error || statsQuery.error) return <ErrorState />;
 
   const contadorData = contadorQuery.data;
   const statsData = statsQuery.data;
 
   return (
-    <div className="space-y-8">
-      {/* Contador Section */}
-      <div>
-        <DiasSinArruinar
-          dias={contadorData?.diasSinArruinar || 0}
-          isLoading={contadorQuery.isLoading}
-        />
-        <CounterDisplay
-          numero={contadorData?.numero || 0}
-          isLoading={contadorQuery.isLoading}
-        />
-        <UltimoContador
-          nombre={contadorData?.ultimoUsuario.nombre || '-'}
-          isLoading={contadorQuery.isLoading}
-        />
-      </div>
+    <div>
+      {/* Counter section */}
+      <DiasSinArruinar
+        dias={contadorData?.diasSinArruinar ?? 0}
+        isLoading={contadorQuery.isLoading}
+      />
+      <CounterDisplay
+        numero={contadorData?.numero ?? 0}
+        isLoading={contadorQuery.isLoading}
+      />
+      <UltimoContador
+        nombre={contadorData?.ultimoUsuario.nombre ?? '-'}
+        isLoading={contadorQuery.isLoading}
+      />
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-3 gap-8">
-        <Card emoji="👑" title="Top contadores" subtitle="Rankings de más números contados">
+      {/* Cards grid */}
+      <div className="grid grid-cols-3 gap-5">
+        <Card type="top-contadores" title="Top contadores" subtitle="Rankings de más números contados">
           <TopContadores
-            usuarios={statsData?.topContadores || []}
+            usuarios={statsData?.topContadores ?? []}
             isLoading={statsQuery.isLoading}
           />
         </Card>
 
-        <Card emoji="🎯" title="Promesas" subtitle="Objetivos de contadores">
-          <Promesas promesas={statsData?.promesas || []} isLoading={statsQuery.isLoading} />
+        <Card type="promesas" title="Promesas" subtitle="Objetivos de contadores">
+          <Promesas
+            promesas={statsData?.promesas ?? []}
+            isLoading={statsQuery.isLoading}
+          />
         </Card>
 
-        <Card emoji="💩" title="Top caqueados" subtitle="Rankings de más errores">
+        <Card type="top-caqueados" title="Top caqueados" subtitle="Rankings de más errores">
           <TopCaqueados
-            errores={statsData?.topCaqueados || []}
+            errores={statsData?.topCaqueados ?? []}
             isLoading={statsQuery.isLoading}
           />
         </Card>
