@@ -36,7 +36,12 @@ export const Dashboard: FC = () => {
       />
 
       {/* Cards grid */}
-      <div className="grid grid-cols-3 gap-5">
+      <div
+        className="grid gap-[clamp(1rem,3vw,1.5rem)]"
+        style={{
+          gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 90vw, 400px), 1fr))',
+        }}
+      >
         <Card type="top-contadores" title="Top contadores" subtitle="Rankings de más números contados">
           <TopContadores
             usuarios={statsData?.topContadores ?? []}

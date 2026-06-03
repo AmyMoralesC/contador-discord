@@ -12,24 +12,24 @@ export const mockContadorData: ContadorData = {
 
 export const mockStatsData: StatsData = {
   topContadores: [
-    { id: '1', nombre: 'Juan Carlos', contador: 234 },
+    { id: '1', nombre: 'DonCafecito', contador: 234 },
     { id: '2', nombre: 'Aryx', contador: 187 },
-    { id: '3', nombre: 'María F.', contador: 156 },
-    { id: '4', nombre: 'Carlos R.', contador: 142 },
-    { id: '5', nombre: 'Ana López', contador: 128 },
+    { id: '3', nombre: 'ShadowByte', contador: 156 },
+    { id: '4', nombre: 'JuanitoFPS', contador: 142 },
+    { id: '5', nombre: 'RaijinX', contador: 128 },
   ],
   topCaqueados: [
-    { id: '1', usuarioId: 'u1', usuarioNombre: 'Luis M.', cantidad: 12 },
-    { id: '2', usuarioId: 'u2', usuarioNombre: 'Juan S.', cantidad: 8 },
-    { id: '3', usuarioId: 'u3', usuarioNombre: 'Rosa M.', cantidad: 5 },
-    { id: '4', usuarioId: 'u4', usuarioNombre: 'Pedro G.', cantidad: 3 },
-    { id: '5', usuarioId: 'u5', usuarioNombre: 'Sofia L.', cantidad: 2 },
+    { id: '1', usuarioId: 'u1', usuarioNombre: 'Error404Skill', cantidad: 12 },
+    { id: '2', usuarioId: 'u2', usuarioNombre: 'OniByte', cantidad: 8 },
+    { id: '3', usuarioId: 'u3', usuarioNombre: 'Rosita', cantidad: 5 },
+    { id: '4', usuarioId: 'u4', usuarioNombre: 'QuantumPanda', cantidad: 3 },
+    { id: '5', usuarioId: 'u5', usuarioNombre: 'VoidWalker', cantidad: 2 },
   ],
   promesas: [
     {
       id: '1',
       usuarioId: '1',
-      usuarioNombre: 'Juan Carlos',
+      usuarioNombre: 'DonCafecito',
       promesa: 'Llegar a 500',
       numeroObjetivo: 500,
       numeroActual: 261,
@@ -45,7 +45,7 @@ export const mockStatsData: StatsData = {
     {
       id: '3',
       usuarioId: '3',
-      usuarioNombre: 'María F.',
+      usuarioNombre: 'ShadowByte',
       promesa: 'Llegar a 750',
       numeroObjetivo: 750,
       numeroActual: 261,
