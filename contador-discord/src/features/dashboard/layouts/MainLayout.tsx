@@ -59,7 +59,6 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       t += 0.016;
 
-      // Stars
       stars.forEach((s) => {
         const wave = Math.sin(t * s.twinkleSpeed * 60 + s.twinkleOffset);
         s.opacity = s.bright
@@ -80,7 +79,6 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         }
       });
 
-      // Shooting stars
       spawnShooting();
       for (let i = shootingStars.length - 1; i >= 0; i--) {
         const s = shootingStars[i];
@@ -124,7 +122,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-[#0d1117] relative overflow-hidden font-mono">
 
-      {/* Grid background */}
+      {/* Grid background - escalado automático */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -132,27 +130,38 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
             linear-gradient(rgba(251,194,8,0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(251,194,8,0.05) 1px, transparent 1px)
           `,
-          backgroundSize: '44px 44px',
+          backgroundSize: 'clamp(40px, 3vw, 50px) clamp(40px, 3vw, 50px)',
         }}
       />
 
       {/* Stars canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
-      {/* Orbs */}
-      <div className="absolute -top-20 left-10 w-125 h-125 rounded-full pointer-events-none animate-orb-float"
-        style={{ background: 'radial-gradient(circle, rgba(251,194,8,0.07) 0%, transparent 70%)' }} />
-      <div className="absolute bottom-0 right-10 w-100 h-100p rounded-full pointer-events-none animate-orb-float-reverse"
-        style={{ background: 'radial-gradient(circle, rgba(251,194,8,0.05) 0%, transparent 70%)' }} />
+      {/* Orbs - escalados responsivamente */}
+      <div className="absolute -top-20 left-10 rounded-full pointer-events-none animate-orb-float"
+        style={{
+          width: 'clamp(300px, 40vw, 500px)',
+          height: 'clamp(300px, 40vw, 500px)',
+          background: 'radial-gradient(circle, rgba(251,194,8,0.07) 0%, transparent 70%)',
+        }} />
+      <div className="absolute bottom-0 right-10 rounded-full pointer-events-none animate-orb-float-reverse"
+        style={{
+          width: 'clamp(250px, 35vw, 400px)',
+          height: 'clamp(250px, 35vw, 400px)',
+          background: 'radial-gradient(circle, rgba(251,194,8,0.05) 0%, transparent 70%)',
+        }} />
 
       {/* Scanline */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
-        <div className="absolute left-0 right-0 h-32 animate-scanline"
-          style={{ background: 'linear-gradient(to bottom, transparent, rgba(251,194,8,0.015), transparent)' }} />
+        <div className="absolute left-0 right-0 animate-scanline"
+          style={{
+            height: 'clamp(80px, 15vh, 120px)',
+            background: 'linear-gradient(to bottom, transparent, rgba(251,194,8,0.015), transparent)',
+          }} />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-350 mx-auto px-10 py-12">
+      <div className="relative z-10 max-w-400 mx-auto px-[clamp(1rem,5vw,3rem)] py-[clamp(2rem,8vh,3rem)]">
         {children}
       </div>
     </div>

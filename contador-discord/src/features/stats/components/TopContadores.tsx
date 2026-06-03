@@ -8,21 +8,24 @@ interface TopContadoresProps {
 }
 
 export const TopContadores: FC<TopContadoresProps> = ({ usuarios, isLoading }) => {
-  if (isLoading) return <div className="p-4"><LoadingState /></div>;
+  if (isLoading) return <div style={{ padding: 'clamp(0.75rem, 2vw, 1.5rem)' }}><LoadingState /></div>;
 
   return (
-    <div className="py-2">
+    <div style={{ padding: 'clamp(0.5rem, 1.5vw, 0.75rem) 0' }}>
       {usuarios.slice(0, 5).map((usuario, index) => (
         <div
           key={usuario.id}
-          className={`flex items-center gap-3 px-4 py-2 transition-colors hover:bg-amber-400/4 ${
+          className={`flex items-center transition-colors hover:bg-amber-400/4 ${
             index === 0 ? 'bg-amber-400/6' : ''
           }`}
+          style={{ gap: 'clamp(0.5rem, 1.5vw, 0.75rem)', padding: 'clamp(0.5rem, 1.5vw, 0.75rem)' }}
         >
           <span
-            className="text-xs font-bold min-w-6"
+            className="font-bold shrink-0"
             style={{
               fontFamily: "'Space Mono', monospace",
+              fontSize: 'clamp(0.65rem, 1.5vw, 0.85rem)',
+              minWidth: 'clamp(20px, 5vw, 30px)',
               color: index === 0 ? '#FBC208' : 'rgba(171,171,171,0.5)',
             }}
           >
@@ -30,9 +33,13 @@ export const TopContadores: FC<TopContadoresProps> = ({ usuarios, isLoading }) =
           </span>
 
           <div
-            className="w-7.5 h-7.5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0"
+            className="rounded-full flex items-center justify-center shrink-0"
             style={{
               fontFamily: "'Space Mono', monospace",
+              fontSize: 'clamp(0.65rem, 1.5vw, 0.85rem)',
+              fontWeight: 700,
+              width: 'clamp(28px, 5vw, 40px)',
+              height: 'clamp(28px, 5vw, 40px)',
               background: index === 0
                 ? 'linear-gradient(135deg, #FBC208, #E6A800)'
                 : 'rgba(255,255,255,0.1)',
@@ -42,12 +49,18 @@ export const TopContadores: FC<TopContadoresProps> = ({ usuarios, isLoading }) =
             {usuario.nombre.substring(0, 2).toUpperCase()}
           </div>
 
-          <span className="text-white text-[13px] flex-1">{usuario.nombre}</span>
+          <span
+            className="text-white flex-1"
+            style={{ fontSize: 'clamp(0.75rem, 1.8vw, 0.95rem)' }}
+          >
+            {usuario.nombre}
+          </span>
 
           <span
-            className="text-xs font-bold"
+            className="font-bold shrink-0"
             style={{
               fontFamily: "'Space Mono', monospace",
+              fontSize: 'clamp(0.65rem, 1.5vw, 0.85rem)',
               color: index === 0 ? '#FBC208' : 'rgba(255,255,255,0.8)',
             }}
           >
